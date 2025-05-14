@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+    --user-primary-color: #0077cc;
+    --user-secondary-color: #0056b3;
+    --user-accent-color: #28a745;
+    --user-danger-color: #dc3545;
+    --user-text-color: #343a40;
+    --user-text-light: #6c757d;
+    --user-bg-color: #f0f4f8;
+    --user-card-bg: #ffffff;
+    --user-border-color: #dee2e6;
+    --user-border-radius: 10px;
+    --user-shadow-light: 0 3px 8px rgba(0, 0, 0, 0.05);
+    --user-shadow-medium: 0 6px 15px rgba(0, 0, 0, 0.08);
+    --user-transition-speed: 0.3s;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    overflow-x: clip;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--user-bg-color);
+    color: var(--user-text-color);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+header {
+    background: linear-gradient(135deg, var(--user-primary-color), var(--user-secondary-color));
+    color: white;
+    padding: 25px 30px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 119, 204, 0.2);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+header p {
+    margin: 8px 0 0;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+header button#admin-access-btn {
+    background-color: rgba(255, 193, 7, 0.9);
+    color: var(--user-text-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--user-border-radius);
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 15px;
+    transition: background-color var(--user-transition-speed) ease, transform var(--user-transition-speed) ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+header button#admin-access-btn:hover {
+    background-color: #ffc107;
+    transform: translateY(-2px);
+}
+
+header button#userLogoutButton {
+    background-color: var(--user-danger-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--user-border-radius);
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 15px;
+    margin-left: 10px;
+    transition: background-color var(--user-transition-speed) ease, transform var(--user-transition-speed) ease;
+    box-shadow: 0 2px 5px rgba(220, 53, 69, 0.2);
+}
+header button#userLogoutButton:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+
+main {
+    padding: 30px;
+    max-width: 960px;
+    margin: 30px auto;
+}
+
+section {
+    background-color: var(--user-card-bg);
+    padding: 25px 30px;
+    margin-bottom: 30px;
+    border-radius: var(--user-border-radius);
+    box-shadow: var(--user-shadow-medium);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUpFadeIn 0.6s forwards ease-out;
+    animation-delay: calc(var(--section-index, 0) * 0.1s + 0.2s);
+}
+@keyframes slideUpFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section h2 {
+    margin-top: 0;
+    color: var(--user-primary-color);
+    border-bottom: 2px solid var(--user-border-color);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+#activity-form div {
+    margin-bottom: 20px;
+}
+
+#activity-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--user-text-light);
+}
+
+#activity-form input[type="text"],
+#activity-form input[type="file"],
+#activity-form input[type="datetime-local"],
+#activity-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 6px;
+    border: 1px solid var(--user-border-color);
+    font-size: 1rem;
+    transition: border-color var(--user-transition-speed) ease, box-shadow var(--user-transition-speed) ease;
+}
+#activity-form input[type="file"] {
+    padding: 10px;
+}
+
+#activity-form input:focus,
+#activity-form textarea:focus {
+    outline: none;
+    border-color: var(--user-primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.2);
+}
+
+#activity-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+#activity-form button {
+    background: linear-gradient(135deg, var(--user-accent-color), #218838);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.05rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all var(--user-transition-speed) ease;
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+}
+
+#activity-form button:hover {
+    box-shadow: 0 6px 15px rgba(40, 167, 69, 0.4);
+    transform: translateY(-2px);
+}
+#activity-form button:active {
+    transform: translateY(0);
+}
+
+.activity-card {
+    background: var(--user-card-bg);
+    border: 1px solid var(--user-border-color);
+    border-radius: var(--user-border-radius);
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: var(--user-shadow-light);
+    transition: transform var(--user-transition-speed) ease, box-shadow var(--user-transition-speed) ease;
+    opacity: 0;
+    transform: scale(0.95);
+    animation: zoomInCard 0.5s forwards ease-out;
+    animation-delay: calc(var(--card-index, 0) * 0.08s + 0.3s);
+}
+@keyframes zoomInCard {
+    to { opacity: 1; transform: scale(1); }
+}
+
+.activity-card:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: var(--user-shadow-medium);
+}
+
+.activity-card h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: var(--user-secondary-color);
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.activity-card p {
+    margin: 10px 0;
+    color: var(--user-text-light);
+    font-size: 0.95rem;
+}
+.activity-card p strong {
+    color: var(--user-text-color);
+    font-weight: 500;
+}
+
+.activity-card img.activity-image-display { /* NOVO ESTILO PARA IMAGEM */
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--user-border-color);
+}
+
+.activity-card a.file-link {
+    color: var(--user-primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    margin-top: 8px;
+    padding: 5px 0;
+    position: relative;
+}
+.activity-card a.file-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--user-primary-color);
+    transition: width var(--user-transition-speed) ease;
+}
+.activity-card a.file-link:hover::after {
+    width: 100%;
+}
+
+
+.comentarios {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e9ecef;
+}
+
+.comentarios h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--user-secondary-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.comentarios ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 15px;
+}
+.comentarios ul li {
+    background-color: #f8f9fa;
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    border: 1px solid #e9ecef;
+    font-size: 0.9rem;
+    color: var(--user-text-light);
+}
+.comentarios ul li strong {
+    color: var(--user-text-color);
+    font-weight: 500;
+}
+
+.comentario-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.comentarios input[type="text"] {
+    flex-grow: 1;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--user-border-color);
+    font-size: 0.95rem;
+    transition: border-color var(--user-transition-speed) ease, box-shadow var(--user-transition-speed) ease;
+}
+.comentarios input[type="text"]:focus {
+    outline: none;
+    border-color: var(--user-primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.15);
+}
+
+.comentarios button {
+    padding: 10px 20px;
+    background: var(--user-primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color var(--user-transition-speed) ease, transform var(--user-transition-speed) ease;
+}
+.comentarios button:hover {
+    background: var(--user-secondary-color);
+    transform: scale(1.05);
+}

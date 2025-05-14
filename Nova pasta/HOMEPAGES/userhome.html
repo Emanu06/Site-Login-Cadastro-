@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Área do Usuário</title>
+<link rel="stylesheet" href="../CSS/userhome.css">
+</head>
+<body>
+
+  <header>
+    <h1>Área do Usuário</h1>
+    <p>Bem-vindo(a), <span id="user-name">Carregando...</span>!</p>
+    <p id="user-role">Permissão: Carregando...</p>
+    <button id="admin-access-btn" style="display: none;">Acessar Área Admin</button>
+    <button id="userLogoutButton" style="margin-top: 10px;">Sair</button>
+  </header>
+
+  <main>
+    <section id="create-activity" style="display: none;">
+      <h2>Criar Nova Atividade</h2>
+      <form id="activity-form">
+        <div>
+          <label for="activity-title">Título:</label>
+          <input type="text" id="activity-title" required>
+        </div>
+        <div>
+          <label for="activity-description">Descrição:</label>
+          <textarea id="activity-description" rows="4" required></textarea>
+        </div>
+        <div>
+          <label for="activity-image">Imagem da Atividade (PNG, JPG, GIF):</label>
+          <input type="file" id="activity-image" accept="image/png, image/jpeg, image/gif, image/jpg">
+        </div>
+        <div>
+          <label for="activity-file">Arquivo Anexo (opcional):</label>
+          <input type="file" id="activity-file">
+        </div>
+        <div>
+          <label for="activity-schedule">Agendar para:</label>
+          <input type="datetime-local" id="activity-schedule" required>
+        </div>
+        <button type="submit">Criar Atividade</button>
+      </form>
+    </section>
+
+    <section id="activities-list-section">
+        <h2>Atividades Agendadas</h2>
+        <div id="activities-container">
+            <p>Nenhuma atividade encontrada ou carregando...</p>
+        </div>
+    </section>
+  </main>
+<script src="../SCRIPT/userhome.js"></script>
+</body>
+</html>

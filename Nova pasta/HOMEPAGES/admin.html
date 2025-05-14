@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Administração</title>
+  <link rel="stylesheet" href="../CSS/admin.css">
+</head>
+<body>
+  <header><button id="btnVoltarAdminParaHome">HOME</button></header>
+  <div class="admin-container">
+    <h2>Área do Administrador</h2> 
+    <div class="user-info-admin" style="text-align: right; margin-bottom: 15px;">
+        Logado como: <span id="adminLoggedInUserName"></span> (<span id="adminLoggedInUserRole"></span>)
+        <button id="adminLogoutButton" style="margin-left: 10px;">Sair</button>
+    </div>
+
+    <div class="top-bar">
+      <input type="text" id="buscaInput" placeholder="Buscar por nome ou email...">
+      <button id="btnMostrarFormularioCriar">+ Criar Usuário</button>
+    </div>
+
+    <div id="formularioCriar" class="form-criar" style="display:none;">
+      <h3>Novo Usuário</h3>
+      <input type="text" id="novoNome" placeholder="Nome">
+      <input type="email" id="novoEmail" placeholder="Email">
+      <input type="password" id="novaSenha" placeholder="Senha">
+      <select id="novaPermissao">
+        <option value="user">Usuário</option>
+        <option value="viewer">Viewer</option>
+        <option value="admin">Admin</option>
+      </select>
+      <button id="btnSalvarNovoUsuario">Salvar</button>
+      <button id="btnCancelarNovoUsuario" class="cancelar">Cancelar</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Senha</th>
+          <th>Permissão</th>
+          <th>Status</th>
+          <th class="actions-header">Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tabelaUsuarios"></tbody>
+    </table>
+  </div>
+
+  <script src="../SCRIPT/admin.js"></script>
+</body>
+</html>

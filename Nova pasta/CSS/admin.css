@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+    --admin-primary-color: #3a7bd5;
+    --admin-secondary-color: #00d2ff;
+    --admin-accent-color: #2ecc71;
+    --admin-danger-color: #e74c3c;
+    --admin-warning-color: #f39c12;
+    --admin-info-color: #3498db;
+    --admin-light-gray: #f8f9fa;
+    --admin-medium-gray: #e9ecef;
+    --admin-dark-gray: #6c757d;
+    --admin-text-color: #343a40;
+    --admin-bg-color: #f4f7f9;
+    --admin-card-bg: #ffffff;
+    --admin-border-radius: 10px; /* Aumentado um pouco */
+    --admin-box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07); /* Sombra mais suave e difundida */
+    --admin-transition-speed: 0.3s;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--admin-bg-color);
+    color: var(--admin-text-color);
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.admin-container {
+    max-width: 1300px;
+    margin: 40px auto;
+    padding: 35px; /* Padding aumentado */
+    background: var(--admin-card-bg);
+    border-radius: var(--admin-border-radius);
+    box-shadow: var(--admin-box-shadow);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s var(--admin-transition-speed) forwards ease-out;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Header da página (com botão HOME) */
+body > header { /* Mais específico para o header principal da página */
+    background: var(--admin-primary-color);
+    padding: 12px 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px; /* Para separar do admin-container se ele estiver muito no topo */
+}
+body > header button {
+    background: white;
+    color: var(--admin-primary-color);
+    border: 1px solid var(--admin-primary-color);
+    padding: 8px 18px;
+    border-radius: var(--admin-border-radius);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--admin-transition-speed) ease;
+}
+body > header button:hover {
+    background: var(--admin-light-gray);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+
+/* Header dentro do .admin-container (H1, user-info-admin) */
+.admin-container > h2 { /* Título "Área do Administrador" */
+    margin: 0 0 25px 0;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--admin-primary-color);
+    /* background: linear-gradient(45deg, var(--admin-primary-color), var(--admin-secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+}
+
+.user-info-admin { /* Div com "Logado como..." */
+    font-size: 0.95em;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 25px; /* Aumentado espaço */
+    color: var(--admin-dark-gray);
+}
+.user-info-admin #adminLoggedInUserName {
+    font-weight: 500;
+    color: var(--admin-text-color);
+    margin-left: 5px;
+}
+.user-info-admin #adminLoggedInUserRole {
+    font-style: italic;
+    color: var(--admin-primary-color);
+    margin-left: 3px;
+}
+.user-info-admin #adminLogoutButton {
+    background: var(--admin-danger-color);
+    color: white;
+    border: none;
+    padding: 8px 15px; /* Ajustado padding */
+    border-radius: 6px; /* Raio menor para botões menores */
+    cursor: pointer;
+    margin-left: 15px;
+    font-weight: 500;
+    font-size: 0.9em;
+    transition: background-color var(--admin-transition-speed) ease, transform var(--admin-transition-speed) ease;
+}
+.user-info-admin #adminLogoutButton:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 15px; /* Espaço entre input e botão */
+}
+.top-bar #buscaInput {
+    flex-grow: 1; /* Input ocupa espaço disponível */
+    padding: 12px 15px;
+    border: 1px solid var(--admin-medium-gray);
+    border-radius: var(--admin-border-radius);
+    font-size: 1rem;
+    transition: border-color var(--admin-transition-speed) ease, box-shadow var(--admin-transition-speed) ease;
+}
+.top-bar #buscaInput:focus {
+    outline: none;
+    border-color: var(--admin-primary-color);
+    box-shadow: 0 0 0 3px rgba(58, 123, 213, 0.25);
+}
+.top-bar button { /* Botão "+ Criar Usuário" */
+    background: var(--admin-primary-color);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: var(--admin-border-radius);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--admin-transition-speed) ease;
+    white-space: nowrap; /* Evita quebra de linha no texto */
+}
+.top-bar button:hover {
+    background: var(--admin-secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-criar {
+    background-color: var(--admin-light-gray);
+    padding: 25px;
+    border-radius: var(--admin-border-radius);
+    margin-bottom: 30px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    overflow: hidden; /* Para animação de altura */
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, padding 0.5s ease-in-out;
+}
+.form-criar.visible { /* Adicionar/remover esta classe via JS */
+    max-height: 500px; /* Altura suficiente para o conteúdo */
+    opacity: 1;
+    padding: 25px; /* Restaura padding quando visível */
+}
+
+.form-criar h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--admin-primary-color);
+    font-weight: 500;
+}
+.form-criar input,
+.form-criar select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--admin-medium-gray);
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+.form-criar input:focus,
+.form-criar select:focus {
+    outline: none;
+    border-color: var(--admin-primary-color);
+    box-shadow: 0 0 0 3px rgba(58, 123, 213, 0.2);
+}
+.form-criar button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-right: 10px;
+    transition: all var(--admin-transition-speed) ease;
+}
+.form-criar button:not(.cancelar) {
+    background-color: var(--admin-accent-color);
+    color: white;
+}
+.form-criar button:not(.cancelar):hover {
+    background-color: #27ae60;
+    transform: translateY(-1px);
+}
+.form-criar button.cancelar {
+    background-color: var(--admin-dark-gray);
+    color: white;
+}
+.form-criar button.cancelar:hover {
+    background-color: #5a6268;
+    transform: translateY(-1px);
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    border-radius: var(--admin-border-radius);
+    overflow: hidden; /* Para border-radius funcionar nas células */
+    animation: slideInTable 0.7s var(--admin-transition-speed) ease-out forwards;
+    opacity: 0;
+    transform: translateX(-20px);
+}
+@keyframes slideInTable {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+th, td {
+    text-align: left;
+    padding: 16px 20px; /* Aumentado padding */
+    border-bottom: 1px solid var(--admin-medium-gray);
+    vertical-align: middle;
+}
+
+th {
+    background-color: var(--admin-light-gray);
+    font-weight: 500; /* Um pouco menos pesado */
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.8px; /* Aumentado espaçamento */
+    color: var(--admin-dark-gray);
+}
+th.actions-header { /* Cabeçalho da coluna de ações */
+   text-align: right;
+   display: none; /* Controlado por JS */
+}
+th.actions-header.visible {
+    display: table-cell;
+}
+
+
+tr {
+    transition: background-color var(--admin-transition-speed) ease, transform 0.2s ease;
+}
+tr:last-child td {
+    border-bottom: none;
+}
+tr:hover {
+    background-color: #eef5ff; /* Azul claro suave */
+    transform: scale(1.005); /* Efeito sutil de zoom */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sombra no hover da linha */
+    z-index: 1;
+    position: relative;
+}
+
+
+.actions-column {
+    text-align: right;
+    white-space: nowrap; /* Impede que os botões quebrem linha */
+    display: none; /* Por padrão escondida, JS controla para admin */
+}
+.actions-column.visible {
+    display: table-cell;
+}
+
+.actions-column button {
+    padding: 7px 11px; /* Ajustado */
+    margin-left: 6px; /* Espaço entre botões */
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85em;
+    font-weight: 500;
+    transition: all var(--admin-transition-speed) ease;
+    position: relative;
+    overflow: hidden;
+}
+.actions-column button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+.actions-column button:active {
+    transform: translateY(0px) scale(1);
+}
+
+.approve-btn { background-image: linear-gradient(45deg, var(--admin-accent-color), #27ae60); color: white; }
+.reject-btn { background-image: linear-gradient(45deg, var(--admin-danger-color), #c0392b); color: white; }
+.delete-btn { background-image: linear-gradient(45deg, var(--admin-dark-gray), #525f68); color: white; }
+.make-admin-btn { background-image: linear-gradient(45deg, var(--admin-warning-color), #d35400); color: white; }
+.make-viewer-btn { background-image: linear-gradient(45deg, #1abc9c, #16a085); color: white; }
+.make-user-btn { background-image: linear-gradient(45deg, #bdc3c7, #95a5a6); color: white; }
+
+#noUsersMessage {
+    padding: 25px;
+    text-align: center;
+    color: var(--admin-dark-gray);
+    font-style: italic;
+    background-color: var(--admin-light-gray);
+    border-radius: var(--admin-border-radius);
+    margin-top: 20px;
+}

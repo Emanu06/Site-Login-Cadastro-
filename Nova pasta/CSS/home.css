@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+    --login-primary-color: #2980b9;
+    --login-secondary-color: #3498db;
+    --login-accent-color: #6dd5fa;
+    --login-text-color: #333;
+    --login-input-border: #ced4da;
+    --login-input-focus-border: var(--login-primary-color);
+    --login-input-focus-shadow: rgba(41, 128, 185, 0.25);
+    --login-card-bg: rgba(255, 255, 255, 0.97);
+    --login-border-radius: 10px;
+    --login-box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0,0,0,0.08);
+    --login-transition-speed: 0.3s;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--login-text-color);
+    line-height: 1.6;
+    padding: 20px;
+    background: linear-gradient(-45deg, var(--login-primary-color), var(--login-accent-color), #2c3e50, #4ca1af);
+    background-size: 400% 400%;
+    animation: loginGradientBG 20s ease infinite;
+    overflow: hidden;
+}
+
+@keyframes loginGradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Supondo que o container do formulário de login tenha a classe 'container' ou você pode usar 'login-container' e ajustar no HTML */
+.container { /* Ou .login-form-container se preferir um nome mais específico */
+    background: var(--login-card-bg);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    padding: 40px 45px;
+    border-radius: var(--login-border-radius);
+    box-shadow: var(--login-box-shadow);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    opacity: 0;
+    transform: perspective(1000px) rotateY(15deg) scale(0.95);
+    animation: flipIn 0.7s var(--login-transition-speed) forwards ease-out;
+}
+
+@keyframes flipIn {
+    to {
+        opacity: 1;
+        transform: perspective(1000px) rotateY(0deg) scale(1);
+    }
+}
+
+.container h2 {
+    margin-bottom: 25px;
+    color: var(--login-primary-color);
+    font-weight: 700;
+    font-size: 2.1rem;
+}
+
+.container input {
+    width: 100%;
+    padding: 13px 16px;
+    margin: 12px 0;
+    border-radius: 6px;
+    border: 1px solid var(--login-input-border);
+    font-size: 1rem;
+    background-color: rgba(255,255,255,0.85);
+    color: var(--login-text-color);
+    transition: border-color var(--login-transition-speed) ease, box-shadow var(--login-transition-speed) ease, background-color var(--login-transition-speed) ease;
+}
+
+.container input::placeholder {
+    color: #999;
+}
+
+.container input:focus {
+    outline: none;
+    border-color: var(--login-input-focus-border);
+    box-shadow: 0 0 0 3.5px var(--login-input-focus-shadow);
+    background-color: #fff;
+}
+
+.container button[type="submit"] {
+    background: linear-gradient(135deg, var(--login-secondary-color), var(--login-primary-color));
+    color: white;
+    padding: 13px 20px;
+    border: none;
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.05rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 15px;
+    transition: all var(--login-transition-speed) ease;
+    box-shadow: 0 4px 10px rgba(41, 128, 185, 0.35);
+}
+
+.container button[type="submit"]:hover {
+    background: linear-gradient(135deg, var(--login-primary-color), var(--login-secondary-color));
+    box-shadow: 0 6px 15px rgba(41, 128, 185, 0.45);
+    transform: translateY(-2px);
+}
+
+.container button[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(41, 128, 185, 0.3);
+}
+
+.container p { /* Para o link "Não tem conta? Cadastre-se" */
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+.container a { /* Estilo geral para links dentro do container de login */
+    color: var(--login-primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--login-transition-speed) ease, text-shadow var(--login-transition-speed) ease;
+}
+
+.container a:hover {
+    color: var(--login-secondary-color);
+    text-decoration: underline;
+    text-shadow: 0 0 5px rgba(41, 128, 185, 0.3);
+}

@@ -1,0 +1,9 @@
+[
+  {
+    "nome": "Administrador",
+    "email": "admin@exemplo.com",
+    "senha": "admin123",
+    "permissao": "admin",
+    "status": "aprovado"
+  }
+]
